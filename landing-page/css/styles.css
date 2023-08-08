@@ -71,6 +71,18 @@ section {
   text-align: right;
 }
 
+@media only screen and (max-width: 768px) {
+  .navbar__menu ul {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 13px;
+  }
+  .navbar__menu .menu__link a:hover {
+    background: #fff;
+    color: #000;
+  }
+}
+
 .navbar__menu li {
   display: inline-block;
 }
@@ -93,6 +105,10 @@ section {
   visibility: hidden;
   opacity: 0;
   transition: opacity 3s ease-in-out;
+}
+
+.active {
+  background-color: rgb(168, 175, 241);
 }
 
 /* Header Styles */

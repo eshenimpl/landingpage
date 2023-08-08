@@ -71,7 +71,7 @@ function handleNavClick(event) {
 
 // function to set an active state to the navigation items when a section is in the viewport
 function setActiveSection() {
-  sections.forEach((section) => {
+  sections.forEach((section, index) => {
     const sectionPosition = section.getBoundingClientRect();
 
     if (
@@ -79,7 +79,9 @@ function setActiveSection() {
       sectionPosition.bottom >= window.innerHeight / 2
     ) {
       sections.forEach((sec) => sec.classList.remove("your-active-class"));
+      navItems.forEach((item) => item.classList.remove("active"));
       section.classList.add("your-active-class");
+      navItems[index].classList.add("active");
     }
   });
 }
@@ -90,7 +92,7 @@ function showNavBar() {
   if (timer !== null) {
     clearTimeout(timer);
   }
-  timer = setTimeout(hideNavBar, 2000);
+  timer = setTimeout(hideNavBar, 5000);
 }
 
 // function to hide navigation bar if user is not scrolling; called after 2 seconds if no scrolling behavior detected
@@ -123,7 +125,7 @@ function scrollToTop() {
 
 // build the nav
 createNavBar();
-
+const navItems = document.querySelectorAll(".menu__link");
 // Add class 'active' to section when near top of viewport
 window.addEventListener("load", setActiveSection);
 window.addEventListener("scroll", setActiveSection);
